@@ -12,7 +12,8 @@ import java.net.URL;
 public class AppiumConfig {
     //webDriver
     //generic for Android and for IOS
-    public static AppiumDriver<MobileElement> driver;//fild link to object driver
+    public static AppiumDriver<MobileElement> driver;
+    //fild link to object driver
     /*
     {
   "platformName": "Android",

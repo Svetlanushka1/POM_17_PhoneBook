@@ -16,8 +16,7 @@ public class AuthenticationScreen extends BaseScreen{
     MobileElement editTextPassword;
     @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/regBtn']")
     MobileElement registrationButton;
-    //    @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/loginBtn']")
-//    MobileElement loginButton;
+    //  loginButton -> @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/loginBtn']")
     @FindBy(id = "com.sheygam.contactapp:id/loginBtn")
     MobileElement loginButton;
 
