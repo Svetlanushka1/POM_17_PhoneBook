@@ -24,6 +24,12 @@ public class AppiumConfig {
      */
     @BeforeSuite
     public void setUp() throws MalformedURLException {
+
+        //2) method setUp podkluchaet configuration:
+        //a. open the session in Appium and
+        // b. we podkluchaemsay to the Application correspond to this configuration
+        //c. appium takes the run and app starts
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName","Android");
         capabilities.setCapability("deviceName","Nex5");
