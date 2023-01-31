@@ -3,7 +3,7 @@ package screens;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.support.FindBy;
-import screens.BaseScreen;
+
 
 public class SplashScreen extends BaseScreen {
     //annotation FindBy
@@ -22,12 +22,14 @@ public class SplashScreen extends BaseScreen {
 
     }
     public String getCurrentVersion(){
+
         return versionTextView.getText();
     }
+
     public AuthenticationScreen gotoAuthenticationScreen()
     {//2. then we pass to Auth screen via method gotoAuthenticationScreen
         return  new AuthenticationScreen(driver);
-        //3. then fill email and password
+
     }
 
 }
