@@ -5,8 +5,11 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 import models.Contact;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.List;
@@ -73,6 +76,7 @@ public class ContactListScreen extends BaseScreen {
         return this;
     }
 
+
     public boolean checkContainsText(List<MobileElement> list, String text){
         for (MobileElement e : list){
             if(e.getText().contains(text)){
@@ -102,4 +106,17 @@ public class ContactListScreen extends BaseScreen {
         pause(5);
         return this;
     }
+
+    public ContactListScreen isErrorMessageContainsTextAssert(String text){
+
+        Alert alert = new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert();
+        Assert.assertTrue(alert.getText().contains(text));
+        alert.accept();
+        return this;
+
+    }
+
+
 }

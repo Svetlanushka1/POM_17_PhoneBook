@@ -77,6 +77,14 @@ public class AuthenticationScreen extends BaseScreen {
         loginButton.click();
         return new ContactListScreen(driver);
     }
+    //?????????????????? negative
+    public AuthenticationScreen loginNegative(Auth auth) {
+        waitElement(editTextEmail, 5);
+        type(editTextEmail, auth.getEmail());
+        type(editTextPassword, auth.getPassword());
+        loginButton.click();
+        return new AuthenticationScreen(driver);
+    }
 
     public AuthenticationScreen submitLoginNegative() {
         loginButton.click();
@@ -93,6 +101,18 @@ public class AuthenticationScreen extends BaseScreen {
         alert.accept();
         return res;
     }
+    public boolean isAllertTextEqualsError(String text){
+        waitElement(allertText,5);
+        if(allertText.getText().equals("Error")){
+            okButton.click();
+            pause(5);
+           // driver.navigate().back();
+            return true;
+        }
+
+
+        return false;
+    }
     public AuthenticationScreen isErrorMessageContainsTextAssert(String text){
 
        Alert alert = new WebDriverWait(driver, 5)
@@ -101,6 +121,7 @@ public class AuthenticationScreen extends BaseScreen {
         Assert.assertTrue(alert.getText().contains(text));
         alert.accept();
         return this;
+
     }
     //LoginTests
     public boolean isErrorMessageText(String message) {
@@ -127,8 +148,16 @@ public class AuthenticationScreen extends BaseScreen {
         return this;
     }
 
+//AuthNegative
 
-
+    public boolean isAllertMessageOKBtn(String message) {
+         waitElement(allertText, 5);
+        if (allertText.getText().contains("Login or Password incorrect")) {
+                 okButton.click();
+                 return true;
+        }
+        return false;
+    }
     /*
     public AuthenticationScreen isErrorMessageContainsText(String text){
         Alert alert = new WebDriverWait(driver, 5)

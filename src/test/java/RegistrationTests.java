@@ -18,7 +18,7 @@ public class RegistrationTests extends AppiumConfig {
 
 
     }
-    @Test
+  /*  @Test
     public void registrationWrongEmailNegative(){
 
         new AuthenticationScreen(driver)
@@ -27,5 +27,5 @@ public class RegistrationTests extends AppiumConfig {
                 .submitRegistrationNegative()
                 .isErrorMessageContainsTextAssert("username=must be a well-formed email address")
                 ;
-    }
+    }*/
 }

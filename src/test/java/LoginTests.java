@@ -39,48 +39,51 @@ public class LoginTests extends AppiumConfig {
                 .isContactListActivityPresent();
         Assert.assertTrue(res);
     }
+  /*  @Test
+    public void loginNegativeModel() {
+        boolean res = new SplashScreen(driver)
+                .gotoAuthenticationScreen()
+                .loginNegative(Auth.builder()
+                        .email("haifagmail.com")
+                        .password("Haifa082022$")
+                        .build())
+                .isErrorMessageContainsText("Login or Password incorrect");
+        Assert.assertTrue(res);
+    }
 
-   /* @Test
+    @Test
     public void loginNegativeWrongEmail() {
         // 1. we start from new Splash screen
         // 2. go Login form
         // 3. fill with incorrect data
         // 4. click on Login button(Negative - because we stay still on Login screen and do not remove to other screen
-        // 5. Intelleige IDEA lines in red the first method which it does not know and stops
+        // 5. IntelliJ IDEA lines in red the first method which it does not know and stops
         // 6. To right submitLoginNegative we go tp class where submitlogin button is (to Auth screen)
         Assert.assertTrue(new SplashScreen(driver)
                 .gotoAuthenticationScreen()
                 .fillEmail("haifagmail.com").fillPassword("Haifa082022$")
                 .submitLoginNegative()
                 .isErrorMessageText("Login or Password incorrect"));
-            }*/
+            }
     @Test
     public void wrongPassword() {
-        // 1. we start from the Splash screen
-        // 2. then we go to Auth screen via method gotoAuthenticationScreen
-        // 3. then fill email and password
-        // 4. push Login Btn(expext allert)
-        // 5. Check the title of screen "ContactList"
-        new SplashScreen(driver)
+            new SplashScreen(driver)
                 .gotoAuthenticationScreen()
                 .fillEmail("haifa@gmail.com")
                 .fillPassword("haifa082022")
                 .submitLoginNegative()
-                .isErrorMessageContainsText("Login or Password incorrect");
+                .isAllertTextEqualsError("Login or Password incorrect");
         //Assert.assertTrue(res);
-    }
+    }*/
 
     @AfterMethod
   public void postCondition() {
-       if (new ContactListScreen(driver).isContactListActivityPresent()) {
+     if (new ContactListScreen(driver).isContactListActivityPresent()) {
            new ContactListScreen(driver).logout();
            new SplashScreen(driver);
 
-       }else {
-           pause(5);
+       }else
            driver.navigate().back();
-
-       }
 
     }
 

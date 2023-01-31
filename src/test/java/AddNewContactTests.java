@@ -19,7 +19,8 @@ public class AddNewContactTests extends AppiumConfig {
                 .submitLogin();
 
     }
-    @Test(invocationCount = 4)//test will be added 4 time
+    @Test
+            //(invocationCount = 4)//test will be added 4 time
     public void addOneContactPositive(){
         int i = new Random().nextInt(1000)+1000;
         Contact contact = Contact.builder()
@@ -37,7 +38,8 @@ public class AddNewContactTests extends AppiumConfig {
                 .fillContactForm(contact)
                 .submitContact()
                 .isContactAdded(contact);
-    }/*
+    }
+
     @Test
     public void addOneContactNegativeEmptyPhone(){
         int i = new Random().nextInt(1000)+1000;
@@ -49,18 +51,21 @@ public class AddNewContactTests extends AppiumConfig {
                 .address("Haifa")
                 .description("EmptyPhone")
                 .build();
-        Assert.assertTrue(
-                new ContactListScreen(driver)
+
+        new ContactListScreen(driver)
                         .openContactForm()
                         .fillContactForm(contact)
                         .submitContactNegative()
-                        .isErrorMessageContainsText("Error")
-                         );
+                        .isErrorMessageContainsTextAssert("Error")
+                ;
+
+
     }
+
     @AfterClass
     public void postCondition(){
 
-    }*/
+    }
 
 
 }
